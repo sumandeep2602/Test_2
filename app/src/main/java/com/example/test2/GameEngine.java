@@ -16,7 +16,7 @@ import android.content.Context;
         import java.util.ArrayList;
         import java.util.Random;
 
-public class GameEngine<candyHitbox> extends SurfaceView implements Runnable {
+public class GameEngine<candyHitbox, diansourXposition, Dimage> extends SurfaceView implements Runnable {
 
     // Android debug variables
     final static String TAG="DINO-RAINBOWS";
@@ -28,14 +28,15 @@ public class GameEngine<candyHitbox> extends SurfaceView implements Runnable {
     Rect rainbowHitbox;
     Rect candyHitbox;
     Rect garbageHitbox;
-    int diansourXposition = 200;
-    int diansourYposition = 1200;
+    int diansourXposition;
+    int diansourYposition ;
     int candyXposition = 1200;
     int candyYposition = 400;
     Bitmap rainbowimge;
     Bitmap candyimge;
+    Bitmap Dimage;
  int garbageXposition = 100;
- int  garbageYposition =
+ int  garbageYposition = 1000;
  int rainbowXposition = 1000;
  int rainbowYposition =  300;
 
@@ -93,7 +94,17 @@ this.candyHitbox = new Rect(1200,400,1200+candyimge.getWidth();
     this.rainbowHitbox = new Rect(1000,300,1200+rainbowimge.getWidth();
                 300+rainbowimge.getHeight()
                         );
+// put the initial position of dinosaurs
+    this.Dimage = BitmapFactory.decodeResource(this.getContext().getResources(),
+    R.drawable.player_ship);
+        this.diansourXposition = 100;
+        this.diansouYposition = 600;
 
+        this.playerHitbox = new Rect(100,
+                                             600,
+                                             100+playerImage.getWidth(),
+                600+playerImage.getHeight()
+                        );
     private void printScreenInfo() {
 
         Log.d(TAG, "Screen (w, h) = " + this.screenWidth + "," + this.screenHeight);
